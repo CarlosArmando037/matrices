@@ -23,34 +23,28 @@ namespace matrices.Clases
 
         //metodos
 
-        public void InsertarElementoArreglo()
+        public bool InsertarElementoArreglo(VideoJuegoModel videoJuego)
         {
-            Console.WriteLine("inserte el nombre del juego");
-            arreglo[longitud].Titulo = Console.ReadLine();
-            Console.WriteLine("inserte el precio del juego");
-            arreglo[longitud].Precio = Console.ReadLine();
-            Console.WriteLine("inserte el genero del juego");
-            arreglo[longitud].Genero = Console.ReadLine();
-            Console.WriteLine("inserte el plataforma del juego");
-            arreglo[longitud].Plataforma = Console.ReadLine();
+            if (EstaLleno())
+            {
+                return false;
+            }
+            else
+            {
+                arreglo[cantidadReal] = videoJuego;
+                cantidadReal++;
+                return true;
+            }
         }
-        public void InsertarMedio()
+        public void InsertarMedio(VideoJuegoModel videojuego)
         {
             int medio = 0;
             medio = arreglo.Length / 2;
-            Console.WriteLine("inserte el numero de en medio");
             for (int i =0; i< arreglo.Length;i++)
             {
                 if (i == medio )
                 {
-                    Console.WriteLine("inserte el nombre del arreglo");
-                    arreglo[longitud].Titulo = Console.ReadLine();
-                    Console.WriteLine("inserte el nombre del arreglo");
-                    arreglo[longitud].Precio = Console.ReadLine();
-                    Console.WriteLine("inserte el nombre del arreglo");
-                    arreglo[longitud].Genero = Console.ReadLine();
-                    Console.WriteLine("inserte el nombre del arreglo");
-                    arreglo[longitud].Plataforma = Console.ReadLine();
+                    arreglo[i] = videojuego;
                 }
             }
         }
@@ -78,7 +72,7 @@ namespace matrices.Clases
         // para eliminar necesitas seleccionar a minimop uno, entonces tenddre que hcaer primero otro
         public void Eliminar()
         {
-            Console.WriteLine("inserte el elemento que quiere eliminar:");
+            //Console.WriteLine("inserte el elemento que quiere eliminar:");
             string elemento = Console.ReadLine();
             while (elemento != arreglo[longitud].Titulo)
             {
@@ -104,22 +98,24 @@ namespace matrices.Clases
         }
         */
 
-        public string ObtenerElemento()
+        public void ObtenerElemento(VideoJuegoModel videojuego)
         {
-            Console.WriteLine("inserte el elemento que quiere:");
-            string obtener = Console.ReadLine();
             if (EsVacio())
             {
-                return "la matriz esta vacia";
+                Console.WriteLine("la matriz esta vacia");
             }
             else
             {
-                while (obtener != arreglo[longitud].Titulo)
+                for (int i = 0; i < arreglo.Length; i++)
                 {
+                    if (arreglo[i].Titulo == videojuego.Titulo)
+                    {
+                        Console.WriteLine($"el juego es {arreglo[i].Titulo}, precio: {arreglo[i].Precio}, genero: {arreglo[i].Genero}, y plataforma: {arreglo[i].Plataforma}");
+                    }
+                    else
                     longitud++;
                 }
-
-                return $"{arreglo[longitud].Titulo}";
+                
                 //for(string i= obtener;obtener == arreglo[longitud].Titulo; i++ )
             }
         }
@@ -130,24 +126,18 @@ namespace matrices.Clases
                 Console.WriteLine($"el juego se llama: {arreglo[longitud].Titulo}, cuesta: {arreglo[longitud].Precio}, de genero: {arreglo[longitud].Genero}, y plataforma: {arreglo[longitud].Plataforma}");
             }
         } 
-        public void Modificar()
+        public void Modificar(VideoJuegoModel videojuego)
         {
-            Console.WriteLine("inserte el elemento que quiere Modificar:");
-            string elemento = Console.ReadLine();
-            while (elemento != arreglo[longitud].Titulo)
+            for (int i = 0; i < arreglo.Length; i++)
             {
+                if (videojuego.Titulo == arreglo[i].Titulo)
+                {
+                    InsertarElementoArreglo(videojuego);
+                }
                 longitud++;
             }
             Console.WriteLine("inserte los nuevos datos");
 
-            Console.WriteLine("inserte el nombre del arreglo");
-            arreglo[longitud].Titulo = Console.ReadLine();
-            Console.WriteLine("inserte el nombre del arreglo");
-            arreglo[longitud].Precio = Console.ReadLine();
-            Console.WriteLine("inserte el nombre del arreglo");
-            arreglo[longitud].Genero = Console.ReadLine();
-            Console.WriteLine("inserte el nombre del arreglo");
-            arreglo[longitud].Plataforma = Console.ReadLine();
         }
 
 

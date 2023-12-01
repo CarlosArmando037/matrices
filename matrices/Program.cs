@@ -16,6 +16,7 @@ namespace matrices
             int longitud = Convert.ToInt32(Console.ReadLine());
 
             VideoJuegoModel videojuego = new VideoJuegoModel();
+
             Matriz matriz = new Matriz(longitud);
 
             Console.WriteLine("seleccione una opcion");
@@ -67,7 +68,7 @@ namespace matrices
                         matriz.Longitud();
                         break;
                     case 7:
-                        matriz.Eliminar();
+                        matriz.Eliminar(videojuego);
                         break;
                 }
                 Console.WriteLine("seleccione otra opcion");

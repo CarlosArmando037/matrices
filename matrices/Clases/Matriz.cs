@@ -70,33 +70,55 @@ namespace matrices.Clases
         }
 
         // para eliminar necesitas seleccionar a minimop uno, entonces tenddre que hcaer primero otro
-        public void Eliminar()
+        public void Eliminar(VideoJuegoModel videoJuego)
         {
             //Console.WriteLine("inserte el elemento que quiere eliminar:");
-            string elemento = Console.ReadLine();
-            while (elemento != arreglo[longitud].Titulo)
+            for(int i =0; i < arreglo.Length;i++)
             {
-                longitud++;
+                if (videoJuego.Titulo == arreglo[i].Titulo)
+                {
+                    arreglo[i] = null;
+                    RecorrerArreglo();
+                }
+                cantidadReal++;
             }
-            arreglo[longitud].Titulo = "";
-            arreglo[longitud].Precio = "";
-            arreglo[longitud].Genero = "";
-            arreglo[longitud].Plataforma = "";
+        }
+        public void RecorrerArreglo()
+        {
+            for (int i =0; i < arreglo.Length-1;i++)
+            {
+                for (int j = i+1 ; j<arreglo.Length ; j++)
+                {
+                    if (arreglo[i] == null)
+                    {
+                        int temp = j;
+                        i = j;
+                        j = temp;
+                    }
 
+                }
+                
+            }
         }
 
+        
+        //como puedo hacer que me ordene con string?
         /*
         public void OrdenarAsc()
         {
-            for (int i =0 ;i < arreglo.Length;i++)
+            for (int i =0 ;i < arreglo.Length-1;i++)
             {
-                if (arreglo[i] <arreglo)
+                for (int j = i+1; j<arreglo.Length; j++)
                 {
+                    if (arreglo[j] < arreglo[i])
+                    {
 
+                    }
                 }
             }
         }
         */
+        
 
         public void ObtenerElemento(VideoJuegoModel videojuego)
         {
@@ -114,9 +136,7 @@ namespace matrices.Clases
                     }
                     else
                     longitud++;
-                }
-                
-                //for(string i= obtener;obtener == arreglo[longitud].Titulo; i++ )
+                } 
             }
         }
         public void ObtenerTodosElementos()

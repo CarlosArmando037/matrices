@@ -143,7 +143,7 @@ namespace matrices.Clases
         {
             for (int j = 0; j < arreglo.Length; j++)
             {
-                Console.WriteLine($"el juego se llama: {arreglo[longitud].Titulo}, cuesta: {arreglo[longitud].Precio}, de genero: {arreglo[longitud].Genero}, y plataforma: {arreglo[longitud].Plataforma}");
+                Console.WriteLine($"el juego se llama: {arreglo[j].Titulo}, cuesta: {arreglo[j].Precio}, de genero: {arreglo[j].Genero}, y plataforma: {arreglo[j].Plataforma}");
             }
         } 
         public void Modificar(VideoJuegoModel videojuego)
